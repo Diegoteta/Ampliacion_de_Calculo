@@ -1,0 +1,10 @@
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Python (si llegas a usar scripts .py)
+__pycache__/
+*.py[cod]
+
+# Archivos temporales de sistema
+.DS_Store
+Thumbs.db
