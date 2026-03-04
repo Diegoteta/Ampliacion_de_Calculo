@@ -4,6 +4,7 @@
 # Python (si llegas a usar scripts .py)
 __pycache__/
 *.py[cod]
+tempCodeRunnerFile
 
 # Archivos temporales de sistema
 .DS_Store
