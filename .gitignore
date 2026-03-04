@@ -4,8 +4,22 @@
 # Python (si llegas a usar scripts .py)
 __pycache__/
 *.py[cod]
+*$py.class
 tempCodeRunnerFile
+
+# Entornos virtuales (MUY IMPORTANTE)
+venv/
+env/
+.env/
+
+# IDEs
+.vscode/
+.idea/
 
 # Archivos temporales de sistema
 .DS_Store
 Thumbs.db
+
+# Datos (opcional - descomenta si no quieres subir tus datasets)
+# *.csv
+# *.json
