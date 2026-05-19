@@ -1,0 +1,71 @@
+import numpy as np
+a=1; b=2 #limites en x
+c=-1; d=1 #limites de y
+
+nx=100
+x=np.linspace(1,2,nx+1)
+ny=100
+y=np.linspace(-1,1,ny+1)
+dx=(b-a)/nx
+dy=(d-c)/ny
+Anum=0
+for j in range(ny):
+    ym=(y[j]+y[j+1])/2
+    for i in range(nx):
+        xm=(x[i]+x[i+1])/2
+        #miro si cae en segmento hprotzontal
+        if (np.sqrt(2-ym**2)<=xm<=1+np.sqrt(1-ym**2)):
+            Anum+=dx*dy
+Aex=1
+print('Anum : ',Anum)
+print('Aex : ',Aex)
+print('Error : ',np.abs(Anum-Aex))
+
+#Long de la curva
+
+#parametrizacion
+def c1(t):
+    xt=1+np.cos(t)
+    yt=np.sin(t)
+    return np.array([xt,yt])
+def c2(t):
+    xt=np.sqrt(2)*np.cos(t)
+    yt=np.sqrt(2)*np.sin(t)
+    return np.array([xt,yt])
+def F(p):
+    x,y=p
+    return np.array([2*x*y-y**2,x**2+y])
+
+nt1=100
+t1=np.linspace(-np.pi/2,np.pi/2,nt1+1)
+L1=0
+W1=0
+for i in range(0,nt1):
+    p0=c1(t1[i])
+    p1=c1(t1[i+1])
+    pmed=(p0+p1)/2
+    dr=p1-p0
+    ds=np.linalg.norm(dr)
+    L1+=1*ds
+    W1+=np.dot(F(pmed),dr)
+
+
+nt2=100
+t2=np.linspace(-np.pi/4,np.pi/4,nt2+1)
+L2=0
+W2=0
+for i in range(0,nt2):
+    p0=c2(t2[i])
+    p1=c2(t2[i+1])
+    pmed=(p0+p1)/2
+    dr=p1-p0
+    ds=np.linalg.norm(dr)
+    L2+=1*ds
+    W2+=np.dot(F(pmed),dr)
+
+W=W1-W2 #resto pq la curva dos esta negativamente orientada
+print('L1 : ', L1, 'L1ex : ',np.pi)
+print('L2 : ', L2, 'L2ex',np.pi/np.sqrt(2))
+print('Longitud de la curva(num)',L1+L2,'Longitud de la curva(ex)',np.pi+np.pi/np.sqrt(2))
+print('Wnum : ',W)
+

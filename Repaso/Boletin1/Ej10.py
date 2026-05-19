@@ -1,0 +1,2 @@
+def gradW(p):
+    
